@@ -1,4 +1,7 @@
+"use client";
+
 import { AlertTriangle, Globe, Leaf } from "lucide-react";
+import AnimatedSection from "@/components/ui/AnimatedSection";
 
 const challenges = [
   {
@@ -25,7 +28,10 @@ export default function ElDesafio() {
   return (
     <section id="desafio" className="py-16 md:py-20 bg-[#f5f5f5]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-10 md:mb-12">
+        <AnimatedSection
+          animation="fade-in-down"
+          className="text-center mb-10 md:mb-12"
+        >
           <div className="inline-block">
             <div className="bg-[#1e2845] border-4 border-black shadow-[8px_8px_0px_0px_#4caf2f] p-3 md:p-4 transform rotate-1">
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white">
@@ -33,11 +39,15 @@ export default function ElDesafio() {
               </h2>
             </div>
           </div>
-        </div>
+        </AnimatedSection>
         <div className="grid md:grid-cols-3 gap-6 md:gap-8">
           {challenges.map((challenge, index) => (
-            <div key={index}>
-              <div className="bg-white border-4 border-black shadow-[8px_8px_0px_0px_#000] p-6 h-full hover:shadow-[12px_12px_0px_0px_#000] transition-all duration-300">
+            <AnimatedSection
+              key={index}
+              animation="fade-in-up"
+              delay={index * 150}
+            >
+              <div className="bg-white border-4 border-black shadow-[8px_8px_0px_0px_#000] p-6 h-full hover:shadow-[12px_12px_0px_0px_#000] hover:-translate-y-2 transition-all duration-300">
                 <div className="bg-[#4caf2f] w-16 h-16 flex items-center justify-center border-2 border-black shadow-brutal mb-4">
                   <challenge.icon className="w-8 h-8 text-white" />
                 </div>
@@ -48,7 +58,7 @@ export default function ElDesafio() {
                   {challenge.description}
                 </p>
               </div>
-            </div>
+            </AnimatedSection>
           ))}
         </div>
       </div>

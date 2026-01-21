@@ -1,4 +1,7 @@
+"use client";
+
 import { Mic, Lightbulb, PartyPopper, Mountain } from "lucide-react";
+import AnimatedSection from "@/components/ui/AnimatedSection";
 
 const days = [
   {
@@ -56,7 +59,10 @@ export default function AgendaEvento() {
   return (
     <section id="agenda" className="py-16 md:py-20 bg-white">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-10 md:mb-12">
+        <AnimatedSection
+          animation="fade-in-down"
+          className="text-center mb-10 md:mb-12"
+        >
           <div className="inline-block">
             <div className="bg-[#4caf2f] border-4 border-black shadow-[8px_8px_0px_0px_#1e2845] p-3 md:p-4 transform -rotate-1">
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white">
@@ -67,12 +73,16 @@ export default function AgendaEvento() {
           <p className="text-lg md:text-xl text-[#1e2845] font-bold mt-6">
             CLIMATEFEST AMAZONAS PERÚ 2026
           </p>
-        </div>
+        </AnimatedSection>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
-          {days.map((day) => (
-            <div key={day.day}>
+          {days.map((day, index) => (
+            <AnimatedSection
+              key={day.day}
+              animation={index % 2 === 0 ? "fade-in-left" : "fade-in-right"}
+              delay={index * 150}
+            >
               <div
-                className="border-4 border-black shadow-[8px_8px_0px_0px_#000] p-5 md:p-6 h-full hover:shadow-[12px_12px_0px_0px_#000] transition-all duration-300"
+                className="border-4 border-black shadow-[8px_8px_0px_0px_#000] p-5 md:p-6 h-full hover:shadow-[12px_12px_0px_0px_#000] hover:-translate-y-2 transition-all duration-300"
                 style={{ backgroundColor: day.color }}
               >
                 <div className="flex items-center gap-4 mb-4">
@@ -95,9 +105,9 @@ export default function AgendaEvento() {
                   &quot;{day.subtitle}&quot;
                 </p>
                 <ul className="space-y-2">
-                  {day.activities.map((activity, index) => (
+                  {day.activities.map((activity, actIndex) => (
                     <li
-                      key={index}
+                      key={actIndex}
                       className="flex items-start gap-2 text-white text-sm md:text-base"
                     >
                       <span className="text-white font-bold">•</span>
@@ -106,7 +116,7 @@ export default function AgendaEvento() {
                   ))}
                 </ul>
               </div>
-            </div>
+            </AnimatedSection>
           ))}
         </div>
       </div>

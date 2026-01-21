@@ -1,4 +1,7 @@
+"use client";
+
 import { DollarSign, GraduationCap, Wrench, Radio } from "lucide-react";
+import AnimatedSection from "@/components/ui/AnimatedSection";
 
 const alliances = [
   {
@@ -47,7 +50,10 @@ export default function Alianzas() {
   return (
     <section id="alianzas" className="py-16 md:py-20 bg-[#f5f5f5]">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center mb-10 md:mb-12">
+        <AnimatedSection
+          animation="fade-in-down"
+          className="text-center mb-10 md:mb-12"
+        >
           <div className="inline-block">
             <div className="bg-[#1e2845] border-4 border-black shadow-[8px_8px_0px_0px_#4caf2f] p-3 md:p-4 transform rotate-1">
               <h2 className="text-3xl md:text-4xl lg:text-5xl font-bold text-white">
@@ -60,11 +66,15 @@ export default function Alianzas() {
             patrocinio tradicional y convertirse en socios activos de la
             transformación
           </p>
-        </div>
+        </AnimatedSection>
         <div className="grid grid-cols-1 md:grid-cols-2 gap-6 md:gap-8">
           {alliances.map((alliance, index) => (
-            <div key={index}>
-              <div className="bg-white border-4 border-black shadow-[8px_8px_0px_0px_#000] p-5 md:p-6 h-full hover:shadow-[12px_12px_0px_0px_#000] transition-all duration-300">
+            <AnimatedSection
+              key={index}
+              animation="scale-in"
+              delay={index * 120}
+            >
+              <div className="bg-white border-4 border-black shadow-[8px_8px_0px_0px_#000] p-5 md:p-6 h-full hover:shadow-[12px_12px_0px_0px_#000] hover:-translate-y-2 transition-all duration-300">
                 <div className="flex items-start gap-4 mb-4">
                   <div
                     className="w-14 h-14 md:w-16 md:h-16 flex items-center justify-center border-2 border-black shadow-brutal shrink-0"
@@ -100,7 +110,7 @@ export default function Alianzas() {
                   </div>
                 </div>
               </div>
-            </div>
+            </AnimatedSection>
           ))}
         </div>
       </div>
